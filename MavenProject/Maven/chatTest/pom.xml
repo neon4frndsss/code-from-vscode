@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.loveamika</groupId>
     <artifactId>chatTest</artifactId>
@@ -27,7 +29,6 @@
             <artifactId>webdrivermanager</artifactId>
             <version>4.1.0</version>
         </dependency>
-
     </dependencies>
     <build>
         <pluginManagement>
@@ -37,11 +38,6 @@
                     <artifactId>maven-checkstyle-plugin</artifactId>
                     <version>3.0.0</version>
                     <dependencies>
-                        <dependency>
-                            <groupId>com.puppycrawl.tools</groupId>
-                            <artifactId>checkstyle</artifactId>
-                            <version>8.10</version>
-                        </dependency>
                         <dependency>
                             <groupId>com.github.ngeor</groupId>
                             <artifactId>checkstyle-rules</artifactId>
@@ -60,7 +56,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
             </plugin>
-
             <!--
                 You can run jacoco in the default profile with:
                 mvn jacoco:prepare-agent test jacoco:report
@@ -89,7 +84,6 @@
             </plugin>
         </plugins>
     </reporting>
-
     <profiles>
         <!--
         This profile enables jacoco when unit tests are run.
@@ -128,7 +122,6 @@
                 </plugins>
             </build>
         </profile>
-
         <!--
         For the Travis profile:
         - we want to break the build on any checkstyle violation.
