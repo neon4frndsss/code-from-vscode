@@ -1,0 +1,7 @@
+command'java.project.create'/'java.project.refresh'not found - Solution - 
+
+In case it helps anyone, I resolved this issue by providing my JDK path in the java.home setting key name in my VS Code settings.json
+
+e.g.
+
+"java.home": "/path/to/my/javaJDK/jdk1.8/"
