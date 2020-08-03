@@ -1,6 +1,11 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -9,9 +14,25 @@ public class bot {
 
       WebDriverManager.chromedriver().setup();
       WebDriver driver = new ChromeDriver();
-      driver.get("https://loveamika.com/");
-      driver.switchTo().frame("automat-webchat-0a2c72bb-3ea8-43d8-89d3-51810ac85662");
-      driver.findElement(By.xpath("//button/img[@class='css-1jfg77i']")).click();
+      WebDriverWait wait = new WebDriverWait(driver, 20);
+      driver.manage().window().maximize();
+      driver.get("https://www.lazada.com.ph/");
+      driver.findElement(By.cssSelector("input[id='q']")).sendKeys("Mask" + Keys.ENTER);
+      String productName = driver.findElement(By.xpath("(//a[contains(text(),'N95')])[2]")).getText();
+      driver.findElement(By.xpath("(//div[@class='cRjKsc'])[2]")).click();
+      Assert.assertEquals(driver.findElement(By.cssSelector("span[class='pdp-mod-product-badge-title']")).getText(),
+            productName);
 
+      while (!(driver.findElement(By.xpath("//span/input[@type='text']")).getText().equals("5"))) {
+         driver.findElement(By.cssSelector("a[class*='handler-up']")).click();
+      }
+      ;
+      driver.findElement(By.cssSelector("button[class*='pdp-button_theme_orange']")).click();
+      WebElement frameLogin=driver.findElement(By.xpath("//iframe[@class='login-iframe']"));
+      driver.switchTo().frame(frameLogin);
+      driver.findElement(By.xpath("//input[contains(text(),'Please enter your Phone Number or Email')]")).sendKeys("Username@test.com");
+      driver.findElement(By.xpath("//input[@type='password']")).sendKeys("Open@12345");
+      driver.findElement(By.cssSelector("button[type='submit']")).click();
+      driver.quit();
    }
 }
