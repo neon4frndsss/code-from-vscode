@@ -17,9 +17,9 @@ public class bot {
       WebDriverWait wait = new WebDriverWait(driver, 20);
       driver.manage().window().maximize();
       driver.get("https://www.lazada.com.ph/");
-      driver.findElement(By.cssSelector("input[id='q']")).sendKeys("Mask" + Keys.ENTER);
-      String productName = driver.findElement(By.xpath("(//a[contains(text(),'N95')])[2]")).getText();
-      driver.findElement(By.xpath("(//div[@class='cRjKsc'])[2]")).click();
+      driver.findElement(By.cssSelector("input[id='q']")).sendKeys("N95 Mask" + Keys.ENTER);
+      String productName = driver.findElement(By.xpath("(//a[contains(.,'N95')])")).getText();
+      driver.findElement(By.xpath("(//div[@class='cRjKsc'])")).click();
       Assert.assertEquals(driver.findElement(By.cssSelector("span[class='pdp-mod-product-badge-title']")).getText(),
             productName);
 
